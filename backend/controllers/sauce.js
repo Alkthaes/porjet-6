@@ -11,8 +11,8 @@ exports.createSauce = (req, res, next) => {
     });
     sauce.likes = 0;
     sauce.dislikes = 0;
-    usersLike = [];
-    usersDislike = [];
+    sauce.usersLike = [];
+    sauce.usersDislike = [];
     sauce.save()
         .then(() => res.status(201).json({ message: 'La sauce a bien été ajoutée !' }))
         .catch(error => res.status(400).json({ error }));

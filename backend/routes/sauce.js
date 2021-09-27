@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const cors = require('cors');
+
 
 const sauceCtrl = require('../controllers/sauce');
 const auth = require('../middleware/auth');
