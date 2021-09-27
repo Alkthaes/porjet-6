@@ -50,12 +50,14 @@ exports.modifyLikes = (req, res, next) => {
             }
             else if (req.body.like === 0) {
                 if (sauce.usersLike.find(req.body.userId)) {
+                    sauce.like -= 1;
                     const index = sauce.usersLike.indexOf(req.body.userId);
                     if (index < -1) {
                         sauce.usersLike.splice(index, 1);
                     }
                 }
                 else if (sauce.usersDislike.find(req.body.userId)) {
+                    sauce.dislike -= 1;
                     const index = sauce.usersDislike.indexOf(req.body.userId);
                     if (index < -1) {
                         sauce.usersDislike.splice(index, 1);
@@ -87,6 +89,6 @@ exports.getOneSauce = (req, res, next) => {
 
 exports.getAllSauces = (req, res, next) => {
     Sauce.find()
-        .then(sauces => res.status(200).json({ sauce }))
+        .then(sauces => res.status(200).json({ sauces }))
         .catch(error => res.status(400).json({ error }));
 };
